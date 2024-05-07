@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Новое начало</h1>
+   {% for order in orders %}
+      <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-2">
+              <img src="{{ url_for('static', filename='images/'+order.userID.image) }}" class="img-fluid rounded-start" alt="...">
+              <small class="text-muted">Заказчик: {{ order.userID.name }}</small>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ order.title }}</h5>
+                  <p class="card-text">{{ order.describe }}</p>
+                </div>
+            </div>
+          </div>
+      </div>
+  {% else %}
+    <p class="card-text">Новостей пока нет!</p>
+  {% endfor %}
+{% endblock %}

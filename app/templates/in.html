@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <h1>Заказчики</h1>
+   {% for user in in_list %}
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img src="{{ url_for('static', filename='images/'+user.image) }}" class="img-fluid rounded-start" alt="..." width="70%">
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Имя: {{ user.name }}</h5>
+                <h5 class="card-title">Email: {{ user.email }}</h5>
+                <p class="card-text">Количество заказов: {{ user.orders|length }}</p>
+              </div>
+          </div>
+        </div>
+    </div>
+  {% else %}
+    <p class="card-text">Заказчиков пока нет!</p>
+  {% endfor %}
+{% endblock %}
